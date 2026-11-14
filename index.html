@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StreamVibe — Streaming Film &amp; Serial</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- External Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="antialiased selection:bg-[#E50914] selection:text-white" data-view="beranda">
+
+  <!-- Background Ambient Glow -->
+  <div class="ambient-glow"></div>
+
+  <!-- TOP NAVBAR (Desktop: Full Navbar | Mobile: Brand + Search on Beranda/Simpan, hidden on Explore & Watch) -->
+  <header id="top-header" class="sticky top-0 z-40 w-full bg-[#080808]/95 backdrop-blur-md border-b border-white/[0.07]">
+    <div class="max-w-[1280px] mx-auto px-8 h-[68px] flex items-center justify-between top-header-inner">
+      <!-- Left: Brand Logo -->
+      <button onclick="navigateTo('beranda')" class="flex items-center gap-3 focus:outline-none group">
+        <div class="w-8 h-8 rounded-[9px] bg-[#E50914] flex items-center justify-center text-white font-extrabold text-sm shadow-sm group-hover:bg-[#f6121d] transition">
+          S
+        </div>
+        <span class="text-white font-extrabold text-[18px] tracking-tight">StreamVibe</span>
+      </button>
+
+      <!-- Center: 3 Navigation Menus (Hidden on Mobile via style.css) -->
+      <nav id="top-nav-links" class="flex items-center gap-4">
+        <button id="nav-beranda" onclick="navigateTo('beranda')" class="px-5 py-1.5 rounded-full text-xs font-semibold transition">
+          Beranda
+        </button>
+        <button id="nav-explore" onclick="navigateTo('explore')" class="px-5 py-1.5 rounded-full text-xs font-semibold transition">
+          Explore
+        </button>
+        <button id="nav-simpan" onclick="navigateTo('simpan')" class="px-5 py-1.5 rounded-full text-xs font-semibold transition">
+          Simpan
+        </button>
+      </nav>
+
+      <!-- Right: Circular Search Icon Button -->
+      <button onclick="navigateTo('explore', true)" title="Cari Film" class="w-9 h-9 rounded-full bg-[#141414] border border-white/10 flex items-center justify-center text-[#D4D4D4] hover:text-white hover:border-white/25 transition">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path stroke-linecap="round" d="M20 20l-3.5-3.5"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main id="main-container" class="relative z-10 max-w-[1280px] mx-auto px-8 pt-6 pb-16">
+
+    <!-- ==========================================
+         VIEW 1 & 2: BERANDA (Semua & Tab Genre)
+         ========================================== -->
+    <section id="view-beranda" class="block">
+      <!-- Genre Filter Pills (Horizontal Scrollable on Mobile) -->
+      <div class="flex items-center gap-2.5 mb-5 genre-pills-scroll" id="genre-pills-container">
+        <button onclick="selectGenreTab('Semua')" data-genre="Semua" class="genre-pill px-5 py-1.5 rounded-full text-xs font-semibold transition">Semua</button>
+        <button onclick="selectGenreTab('Horror')" data-genre="Horror" class="genre-pill px-5 py-1.5 rounded-full text-xs font-semibold transition">Horror</button>
+        <button onclick="selectGenreTab('Komedi')" data-genre="Komedi" class="genre-pill px-5 py-1.5 rounded-full text-xs font-semibold transition">Komedi</button>
+        <button onclick="selectGenreTab('Action')" data-genre="Action" class="genre-pill px-5 py-1.5 rounded-full text-xs font-semibold transition">Action</button>
+        <button onclick="selectGenreTab('Drama')" data-genre="Drama" class="genre-pill px-5 py-1.5 rounded-full text-xs font-semibold transition">Drama</button>
+        <button onclick="selectGenreTab('Anime')" data-genre="Anime" class="genre-pill genre-pill-anime px-5 py-1.5 rounded-full text-xs font-semibold transition">Anime</button>
+      </div>
+
+      <!-- SUBVIEW A: TAB "SEMUA" (Desktop 1 & Mobile Red Beranda) -->
+      <div id="beranda-semua-content">
+        <!-- Hero Banner Utama -->
+        <div class="hero-gradient rounded-[18px] p-7 md:p-8 relative overflow-hidden mb-7 min-h-[300px] flex flex-col justify-between hero-banner-box">
+          <!-- Top Badges -->
+          <div class="flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 bg-[#8E1C20]/90 border border-white/10 text-white/95 text-[10px] font-bold tracking-wider uppercase px-3.5 py-1.5 rounded-full">
+              ● LIVE PREMIERE
+            </span>
+            <span class="inline-flex items-center gap-1 bg-[#141111]/90 border border-white/10 text-[#FACC15] text-xs font-bold px-3.5 py-1 rounded-full">
+              ★ 9.4
+            </span>
+          </div>
+
+          <!-- Bottom Hero Info -->
+          <div class="mt-14 hero-bottom-content">
+            <h1 class="text-3xl md:text-[38px] font-black tracking-tight text-white uppercase leading-none hero-title">
+              NEON HORIZON
+            </h1>
+            <p class="text-xs md:text-[13px] text-[#C4C4C4] mt-2.5 font-normal hero-meta">
+              Sci-Fi &nbsp;•&nbsp; Cyberpunk &nbsp;•&nbsp; 2j 14m &nbsp;•&nbsp; 4K HDR
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-3 mt-5 hero-actions">
+              <button onclick="openWatchDetail('neon-horizon')" class="hero-play-btn bg-[#E50914] hover:bg-[#f6121d] active:scale-[0.99] text-white font-bold text-xs px-9 py-3.5 rounded-xl transition shadow-lg shadow-[#E50914]/20 inline-flex items-center justify-center gap-2">
+                <span class="mobile-play-triangle">▶</span>
+                <span>Tonton Sekarang</span>
+              </button>
+              <button id="hero-save-btn" onclick="toggleSaveFilm('neon-horizon')" title="Tambah ke Daftar Simpan" class="w-11 h-11 rounded-xl bg-[#1A1617]/90 hover:bg-[#262022] border border-white/15 flex items-center justify-center text-white text-base font-bold transition flex-shrink-0">
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Lanjutkan Menonton -->
+        <div class="mb-7">
+          <div class="flex items-center justify-between mb-3.5">
+            <h2 class="text-[16px] font-bold text-white">Lanjutkan Menonton</h2>
+            <button onclick="navigateTo('explore')" class="text-xs font-medium text-[#E06D70] hover:text-[#E50914] transition">
+              Lihat semua
+            </button>
+          </div>
+
+          <div class="grid grid-cols-3 gap-4 continue-watching-grid" id="continue-watching-grid"></div>
+        </div>
+
+        <!-- Section: Dipilih Khusus Untukmu -->
+        <div>
+          <h2 class="text-[16px] font-bold text-white mb-3.5">Dipilih Khusus Untukmu</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 chosen-for-you-grid" id="chosen-for-you-grid"></div>
+        </div>
+      </div>
+
+      <!-- SUBVIEW B: TAB GENRE (Desktop 2a-2d & Mobile 2-Column Grid) -->
+      <div id="beranda-genre-content" class="hidden">
+        <h2 id="genre-section-title" class="text-[17px] font-bold text-white mb-4">
+          Dipilih Khusus Untukmu - Horror
+        </h2>
+        <div id="genre-movies-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-x-4 gap-y-6 genre-movies-grid"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 3: WATCH & DETAIL (Desktop 3 & Mobile Watch)
+         ========================================== -->
+    <section id="view-watch" class="hidden">
+      <!-- Video Player Box -->
+      <div class="player-gradient rounded-[18px] relative w-full h-[350px] md:h-[380px] flex flex-col justify-between p-5 overflow-hidden watch-player-box">
+        <!-- Top Player Bar -->
+        <div class="flex items-center justify-between z-10">
+          <button onclick="goBackFromWatch()" title="Kembali" class="w-9 h-9 rounded-full bg-[#120A0B]/75 hover:bg-black/90 border border-white/10 flex items-center justify-center text-white text-sm font-bold transition">
+            &lt;
+          </button>
+          <div class="flex items-center gap-2">
+            <button id="cc-toggle-btn" onclick="toggleSubtitles()" class="w-9 h-9 rounded-full bg-[#120A0B]/75 hover:bg-black/90 border border-white/10 flex items-center justify-center text-white text-[11px] font-bold transition">
+              CC
+            </button>
+            <span id="player-mobile-hdr-badge" class="mobile-only-badge bg-[#120A0B]/80 border border-white/15 text-[#FF7A7E] text-[10px] font-bold px-2.5 py-1.5 rounded-full">
+              4K HDR
+            </span>
+          </div>
+        </div>
+
+        <!-- Center Big Red Play Button -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <button id="player-play-btn" onclick="toggleVideoPlay()" class="w-16 h-16 rounded-full bg-[#E50914] hover:bg-[#f6121d] hover:scale-105 active:scale-95 transition flex items-center justify-center text-white text-xl font-bold shadow-2xl shadow-black">
+            <span id="player-play-icon">▶</span>
+          </button>
+        </div>
+
+        <!-- Bottom Player Controls -->
+        <div class="z-10">
+          <div class="flex items-center justify-between mb-2">
+            <span id="player-time-label" class="text-xs font-medium text-white/95">12:45 / 2:14:00</span>
+            <button onclick="toggleFullscreenPlayer()" title="Fullscreen" class="w-7 h-7 rounded-md bg-[#120A0B]/75 hover:bg-black border border-white/10 flex items-center justify-center text-white text-[11px] font-mono">
+              ⛶
+            </button>
+          </div>
+          <!-- Progress Bar -->
+          <div onclick="seekVideo(event)" class="w-full h-1.5 bg-white/15 rounded-full overflow-hidden cursor-pointer relative">
+            <div id="player-progress-bar" class="h-full bg-[#E50914] rounded-full transition-all duration-300 player-progress-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Content (2-Col on Desktop, 1-Col Stack on Mobile) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-6 watch-details-grid">
+        <!-- Left Column: Movie Details -->
+        <div class="lg:col-span-6">
+          <div class="flex items-center gap-3 flex-wrap">
+            <h1 id="watch-title" class="text-2xl font-extrabold text-white uppercase tracking-tight">
+              NEON HORIZON
+            </h1>
+            <span id="watch-badge" class="bg-[#281214] border border-[#E50914]/25 text-[#FF7A7E] text-[10px] font-bold px-2.5 py-1 rounded-md">
+              4K HDR
+            </span>
+          </div>
+
+          <p id="watch-meta" class="text-xs text-[#8E8E8E] mt-2">
+            2026 &nbsp;•&nbsp; Sci-Fi, Cyberpunk &nbsp;•&nbsp; 2j 14m &nbsp;•&nbsp; 16+
+          </p>
+
+          <!-- Simpan & Bagikan Buttons (Full-width 2-col on Mobile) -->
+          <div class="flex items-center gap-3 mt-5 watch-action-buttons">
+            <button id="watch-save-btn" onclick="toggleSaveCurrentWatchFilm()" class="w-36 py-2.5 rounded-xl bg-[#131313] hover:bg-[#1C1C1C] border border-white/10 text-white text-xs font-semibold transition watch-action-btn">
+              Simpan
+            </button>
+            <button onclick="openShareModal()" class="w-36 py-2.5 rounded-xl bg-[#240D0F] hover:bg-[#311114] border border-[#E50914]/40 text-[#FF6B6E] text-xs font-semibold transition watch-action-btn">
+              Bagikan
+            </button>
+          </div>
+
+          <!-- Sinopsis -->
+          <div class="mt-6">
+            <h3 class="text-sm font-bold text-white mb-2">Sinopsis</h3>
+            <p id="watch-synopsis" class="text-xs text-[#A3A3A3] leading-relaxed max-w-[460px] watch-synopsis-text">
+              Di kota metropolitan neo-Jakarta tahun 2099, seorang kurir data menemukan chip memori terlarang yang mengancam kekuasaan korporasi raksasa dan memaksanya bertahan hidup.
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Column: Ulasan & Rating -->
+        <div class="lg:col-span-6">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-bold text-white">Ulasan &amp; Rating</h3>
+            <button onclick="handleWriteReviewClick()" class="write-review-pill bg-[#250E10] hover:bg-[#351215] border border-[#E50914]/30 text-[#FF7A7E] text-[11px] font-semibold px-3 py-1 rounded-full transition">
+              + Tulis Ulasan
+            </button>
+          </div>
+
+          <!-- Rating Summary Box -->
+          <div class="bg-[#121212] card-border rounded-xl p-4 flex items-center gap-6 mb-3">
+            <div class="min-w-[85px]">
+              <div id="watch-rating-score" class="text-3xl font-extrabold text-white leading-none">9.4</div>
+              <div class="text-[#E50914] md:text-[#FACC15] text-[11px] tracking-widest mt-1">★★★★★</div>
+              <div class="text-[11px] text-[#7A7A7A] mt-0.5">12.4rb ulasan</div>
+            </div>
+
+            <div class="flex-1 space-y-2">
+              <div class="flex items-center gap-3 text-[11px] text-[#A3A3A3]">
+                <span class="w-5 text-right">5 ★</span>
+                <div class="flex-1 h-1.5 bg-[#242424] rounded-full overflow-hidden">
+                  <div class="h-full bg-[#E50914] rounded-full rating-bar-5"></div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 text-[11px] text-[#A3A3A3]">
+                <span class="w-5 text-right">4 ★</span>
+                <div class="flex-1 h-1.5 bg-[#242424] rounded-full overflow-hidden">
+                  <div class="h-full bg-[#E50914] rounded-full rating-bar-4"></div>
+                </div>
+              </div>
+              <div class="flex items-center gap-3 text-[11px] text-[#A3A3A3]">
+                <span class="w-5 text-right">3 ★</span>
+                <div class="flex-1 h-1.5 bg-[#242424] rounded-full overflow-hidden">
+                  <div class="h-full bg-[#E50914] rounded-full rating-bar-3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- User Reviews Container -->
+          <div id="watch-reviews-list" class="space-y-2.5">
+            <!-- User Comment 1 -->
+            <div class="bg-[#121212] card-border rounded-xl p-3.5">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-6 h-6 rounded-full bg-[#4D1215] text-[#FF8A8E] text-[11px] font-bold flex items-center justify-center">
+                    R
+                  </div>
+                  <span class="text-xs font-bold text-white">Raka Pratama</span>
+                </div>
+                <span class="text-xs font-bold text-[#FACC15]">★ 9.5</span>
+              </div>
+              <p class="text-xs text-[#A3A3A3] mt-2 leading-relaxed">
+                Visual cyberpunk-nya detail banget, audio dan alurnya bikin betah sampai kredit akhir!
+              </p>
+            </div>
+
+            <!-- User Comment 2 -->
+            <div class="bg-[#121212] card-border rounded-xl p-3.5">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-6 h-6 rounded-full bg-[#4D1215] text-[#FF8A8E] text-[11px] font-bold flex items-center justify-center">
+                    D
+                  </div>
+                  <span class="text-xs font-bold text-white">Dina Larasati</span>
+                </div>
+                <span class="text-xs font-bold text-[#FACC15]">★ 9.0</span>
+              </div>
+              <p class="text-xs text-[#A3A3A3] mt-2 leading-relaxed">
+                Plot twist di babak ketiga benar-benar di luar dugaan. Wajib masuk daftar tontonan.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 4: EXPLORE (Desktop 4 & Mobile Explore)
+         ========================================== -->
+    <section id="view-explore" class="hidden">
+      <div class="mb-4">
+        <h1 class="text-2xl font-extrabold text-white">Explore</h1>
+        <p class="text-xs text-[#8E8E8E] mt-1">Temukan film &amp; serial berdasarkan mood atau genre</p>
+      </div>
+
+      <!-- Search Input Bar (No left icon, exact placeholder) -->
+      <div class="mb-6">
+        <input
+          id="explore-search-input"
+          type="text"
+          oninput="handleExploreSearch(this.value)"
+          placeholder="Cari judul, aktor, atau genre..."
+          class="w-full bg-[#141414] border border-white/10 focus:border-[#E50914]/60 rounded-xl px-4 py-3 text-xs text-white placeholder-[#737373] outline-none transition"
+        />
+      </div>
+
+      <!-- Jelajahi Genre (4 Cols on Desktop, 2x2 Grid on Mobile) -->
+      <div class="mb-7">
+        <h2 class="text-sm font-bold text-white mb-3">Jelajahi Genre</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 explore-genre-grid">
+          <div onclick="jumpToGenreFromExplore('Horror')" class="genre-card-horror card-border explore-genre-card cursor-pointer poster-card">
+            <span class="text-sm font-bold text-white leading-tight">Horror</span>
+            <span class="text-[11px] text-white/75 mt-0.5">142 Judul</span>
+          </div>
+          <div onclick="jumpToGenreFromExplore('Komedi')" class="genre-card-komedi card-border explore-genre-card cursor-pointer poster-card">
+            <span class="text-sm font-bold text-white leading-tight">Komedi</span>
+            <span class="text-[11px] text-white/75 mt-0.5">218 Judul</span>
+          </div>
+          <div onclick="jumpToGenreFromExplore('Action')" class="genre-card-action card-border explore-genre-card cursor-pointer poster-card">
+            <span class="text-sm font-bold text-white leading-tight">Action</span>
+            <span class="text-[11px] text-[#A3A3A3] mt-0.5">96 Judul</span>
+          </div>
+          <div onclick="jumpToGenreFromExplore('Drama')" class="genre-card-drama card-border explore-genre-card cursor-pointer poster-card">
+            <span class="text-sm font-bold text-white leading-tight">Drama</span>
+            <span class="text-[11px] text-[#A3A3A3] mt-0.5">64 Judul</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Populer Minggu Ini -->
+      <div>
+        <h2 id="explore-list-heading" class="text-sm font-bold text-white mb-3">Populer Minggu Ini</h2>
+        <div id="explore-popular-list" class="space-y-3.5"></div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 5: SIMPAN (Desktop 6 & Mobile 1-Col Stack)
+         ========================================== -->
+    <section id="view-simpan" class="hidden">
+      <div class="flex items-center justify-between mb-4">
+        <h1 class="text-2xl font-extrabold text-white">Daftar Simpan</h1>
+        <span id="simpan-top-count" class="text-xs text-[#8E8E8E]">4 Film</span>
+      </div>
+
+      <!-- Full-width Red Banner Bar -->
+      <div id="simpan-red-bar" class="w-full bg-[#E50914] text-white text-xs font-bold py-3 rounded-xl text-center mb-6 shadow-lg shadow-[#E50914]/15">
+        Simpan(4)
+      </div>
+
+      <!-- 2x2 Grid on Desktop, 1-Col Stack on Mobile -->
+      <div id="simpan-cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5 simpan-cards-grid"></div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       FLOATING BOTTOM NAVBAR (Mobile Only <= 768px)
+       ========================================== -->
+  <nav id="mobile-bottom-nav" class="mobile-bottom-nav" aria-label="Navigasi Bawah Mobile">
+    <button id="mnav-beranda" onclick="navigateTo('beranda')" class="mobile-nav-item active-mobile-nav">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5.5v-6h-5v6H4a1 1 0 01-1-1v-9.5z" />
+      </svg>
+      <span>Beranda</span>
+    </button>
+
+    <button id="mnav-explore" onclick="navigateTo('explore')" class="mobile-nav-item">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7"></circle>
+        <path stroke-linecap="round" d="M20 20l-3.5-3.5"></path>
+      </svg>
+      <span>Explore</span>
+    </button>
+
+    <button id="mnav-simpan" onclick="navigateTo('simpan')" class="mobile-nav-item">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M5 4h14a1 1 0 011 1v16l-8-4-8 4V5a1 1 0 011-1z" />
+      </svg>
+      <span>Simpan</span>
+    </button>
+  </nav>
+
+  <!-- ==========================================
+       POPUP MODAL: BAGIKAN FILM (Desktop 3b & Mobile bagikan.pdf)
+       ========================================== -->
+  <div id="share-modal-backdrop" onclick="closeShareModalOnBackdrop(event)" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-[3px] hidden items-center justify-center p-4">
+    <div class="share-modal-box w-full max-w-[440px] bg-[#141414] border border-white/10 rounded-[20px] p-6 shadow-2xl">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between">
+        <h3 class="text-base font-bold text-white">Bagikan Film</h3>
+        <button onclick="closeShareModal()" class="w-7 h-7 rounded-full bg-white/5 hover:bg-white/10 text-[#A3A3A3] hover:text-white text-xs font-bold flex items-center justify-center transition">
+          ✕
+        </button>
+      </div>
+
+      <!-- Mini Movie Box -->
+      <div class="bg-[#1C1C1C] border border-white/[0.06] rounded-xl p-3.5 flex items-center gap-3.5 mt-4">
+        <div id="share-modal-thumb" class="w-11 h-11 rounded-lg thumb-red-bright flex-shrink-0"></div>
+        <div>
+          <h4 id="share-modal-title" class="text-xs font-extrabold text-white uppercase">NEON HORIZON</h4>
+          <p id="share-modal-meta" class="text-[11px] text-[#8E8E8E] mt-0.5">2026 &nbsp;•&nbsp; Sci-Fi &nbsp;•&nbsp; ★ 9.4</p>
+        </div>
+      </div>
+
+      <!-- Link Input & Copy -->
+      <div class="mt-4">
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[11px] text-[#A3A3A3]">Link Tonton StreamVibe</span>
+          <span id="copy-feedback-label" class="text-[11px] text-[#4ADE80] font-semibold hidden">Link berhasil disalin!</span>
+        </div>
+
+        <div class="bg-[#0F0F0F] border border-[#E50914]/40 rounded-xl p-1.5 pl-3.5 flex items-center justify-between gap-2">
+          <input
+            id="share-url-input"
+            type="text"
+            readonly
+            value="https://streamvibe.id/watch/neon-horizon"
+            class="bg-transparent text-xs text-white w-full outline-none select-all"
+          />
+          <button id="copy-link-btn" onclick="copyShareLink()" class="bg-[#E50914] hover:bg-[#f6121d] text-white text-xs font-semibold px-5 py-2 rounded-lg transition flex-shrink-0">
+            Salin
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- External Application JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

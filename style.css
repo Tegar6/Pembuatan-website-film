@@ -1,0 +1,457 @@
+/* ==========================================
+   STREAMVIBE — CUSTOM STYLESHEET (style.css)
+   Desktop & Mobile (iPhone 18 Pro Max) Responsive
+   ========================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #080808;
+  color: #FFFFFF;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Ambient Crimson Glow matching Desktop 1 - 6 */
+.ambient-glow {
+  position: fixed;
+  top: 56px;
+  right: -8%;
+  width: 68%;
+  height: 520px;
+  background: radial-gradient(
+    ellipse at 75% 28%,
+    rgba(150, 14, 20, 0.42) 0%,
+    rgba(90, 8, 12, 0.22) 42%,
+    rgba(8, 8, 8, 0) 75%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle Card Border */
+.card-border {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Card Color Variants matching exact reference screenshots */
+.thumb-red-bright {
+  background: linear-gradient(180deg, #831B1F 0%, #681317 100%);
+}
+
+.thumb-red-deep {
+  background: linear-gradient(180deg, #52090C 0%, #3B0608 100%);
+}
+
+.thumb-red-crimson {
+  background: linear-gradient(180deg, #6E1216 0%, #520C0F 100%);
+}
+
+.thumb-grey-mid {
+  background: linear-gradient(180deg, #262626 0%, #1F1F1F 100%);
+}
+
+.thumb-grey-dark {
+  background: linear-gradient(180deg, #1A1A1A 0%, #141414 100%);
+}
+
+/* Dark Maroon Thumbnail for Popular Weekly Cards (#6B1414 to #2A0808) */
+.thumb-popular-maroon {
+  background: linear-gradient(180deg, #6B1414 0%, #2A0808 100%);
+}
+
+/* Explore "Jelajahi Genre" Cards Layout & Exact Colors */
+.explore-genre-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  height: 100px;
+  border-radius: 16px;
+}
+
+.genre-card-horror {
+  background: linear-gradient(180deg, #7F1D1D 0%, #450A0A 100%);
+}
+
+.genre-card-komedi {
+  background: linear-gradient(180deg, #450A0A 0%, #260808 100%);
+}
+
+.genre-card-action {
+  background-color: #1C1C1E;
+}
+
+.genre-card-drama {
+  background-color: #18181B;
+}
+
+/* Hero Banner Gradient */
+.hero-gradient {
+  background:
+    radial-gradient(
+      circle at 22% 25%,
+      rgba(145, 22, 26, 0.88) 0%,
+      rgba(75, 11, 14, 0.65) 45%,
+      rgba(16, 8, 9, 0.96) 100%
+    ),
+    linear-gradient(135deg, #6B1418 0%, #240708 60%, #0D0708 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Watch Video Player Gradient */
+.player-gradient {
+  background: radial-gradient(
+    ellipse at 50% 35%,
+    #7B181C 0%,
+    #4A0D10 52%,
+    #1C0607 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Initial Video Progress & Rating Bars */
+.player-progress-fill {
+  width: 26%;
+}
+
+.rating-bar-5 {
+  width: 82%;
+}
+
+.rating-bar-4 {
+  width: 14%;
+}
+
+.rating-bar-3 {
+  width: 4%;
+}
+
+/* Continue Watching Progress Bars */
+.cw-progress-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.cw-progress-bar {
+  height: 100%;
+  background-color: #E50914;
+}
+
+.cw-w-65 {
+  width: 65%;
+}
+
+.cw-w-35 {
+  width: 35%;
+}
+
+.cw-w-80 {
+  width: 80%;
+}
+
+/* Poster Card Hover Animation */
+.poster-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.poster-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(229, 9, 20, 0.45);
+  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.75);
+}
+
+/* Desktop Defaults for Mobile-Specific Elements */
+.mobile-bottom-nav {
+  display: none;
+}
+
+.mobile-only-badge {
+  display: none;
+}
+
+.mobile-play-triangle {
+  display: none;
+}
+
+.genre-pill-anime {
+  display: none;
+}
+
+.write-review-pill {
+  display: none;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E50914;
+}
+
+/* =====================================================
+   MOBILE RESPONSIVE (iPhone 18 Pro Max / <= 768px)
+   ===================================================== */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 100px;
+  }
+
+  /* 1. Top Header Simplified on Mobile */
+  #top-nav-links {
+    display: none !important;
+  }
+
+  .top-header-inner {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    height: 60px !important;
+  }
+
+  #main-container {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 14px !important;
+    padding-bottom: 24px !important;
+  }
+
+  /* Hide Top Header on Explore & Watch pages in Mobile */
+  body[data-view="explore"] #top-header,
+  body[data-view="watch"] #top-header {
+    display: none !important;
+  }
+
+  body[data-view="explore"] #main-container {
+    padding-top: 20px !important;
+  }
+
+  /* Hide Bottom Navbar when inside Watch & Detail on Mobile */
+  body[data-view="watch"] #mobile-bottom-nav {
+    display: none !important;
+  }
+
+  body[data-view="watch"] {
+    padding-bottom: 32px;
+  }
+
+  body[data-view="watch"] #main-container {
+    padding-top: 12px !important;
+  }
+
+  /* Floating Bottom Navigation Bar (3 Menus: Beranda, Explore, Simpan) */
+  .mobile-bottom-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    gap: 6px;
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    padding: 6px;
+    border-radius: 999px;
+    background: rgba(20, 20, 20, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8);
+    z-index: 45;
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 8px 6px;
+    border-radius: 999px;
+    color: #9CA3AF;
+    font-size: 10px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .mobile-nav-item.active-mobile-nav {
+    background-color: #E50914;
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(229, 9, 20, 0.35);
+  }
+
+  /* 2. Genre Filter Pills Horizontal Scroll on Mobile */
+  .genre-pills-scroll {
+    flex-wrap: nowrap !important;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 2px;
+  }
+
+  .genre-pills-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .genre-pill {
+    flex-shrink: 0;
+  }
+
+  .genre-pill-anime {
+    display: inline-flex;
+  }
+
+  /* Hero Banner Mobile Adjustments */
+  .hero-banner-box {
+    min-height: 280px !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+  }
+
+  .hero-bottom-content {
+    margin-top: 40px !important;
+  }
+
+  .hero-title {
+    font-size: 28px !important;
+  }
+
+  .hero-meta {
+    font-size: 11px !important;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .hero-play-btn {
+    flex: 1;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .mobile-play-triangle {
+    display: inline-block;
+    font-size: 10px;
+  }
+
+  /* Section Lanjutkan Menonton (3 Horizontal Cards on Mobile) */
+  .continue-watching-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+
+  .continue-watching-thumb {
+    height: 92px !important;
+    border-radius: 12px !important;
+  }
+
+  /* Section Dipilih Khusus Untukmu (Grid 2x2 on Mobile) */
+  .chosen-for-you-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .chosen-card-box {
+    height: 124px !important;
+  }
+
+  /* Tab Genre Grid (2 Columns on Mobile) */
+  .genre-movies-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .genre-poster-box {
+    height: 190px !important;
+  }
+
+  /* 3. Watch & Detail Mobile Adjustments */
+  .watch-player-box {
+    height: 230px !important;
+    border-radius: 18px !important;
+    padding: 14px !important;
+  }
+
+  .mobile-only-badge {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .watch-details-grid {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
+
+  .watch-action-buttons {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    width: 100% !important;
+    gap: 12px !important;
+  }
+
+  .watch-action-btn {
+    width: 100% !important;
+  }
+
+  .watch-synopsis-text {
+    max-width: 100% !important;
+  }
+
+  .write-review-pill {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* 4. Modal Bagikan Film Mobile */
+  .share-modal-box {
+    width: calc(100% - 32px) !important;
+    max-width: 390px !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+  }
+
+  /* 5. Explore & Simpan Mobile Adjustments */
+  .explore-genre-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px !important;
+  }
+
+  .simpan-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 25px !important;
+  }
+
+  .continue-watching-thumb {
+    height: 82px !important;
+  }
+}
