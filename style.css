@@ -92,17 +92,27 @@ body {
   background-color: #18181B;
 }
 
-/* Hero Banner Gradient */
+/* Hero Banner Background (images/hero-re.jpg) & Logo Title (images/re-title.png) */
 .hero-gradient {
-  background:
-    radial-gradient(
-      circle at 22% 25%,
-      rgba(145, 22, 26, 0.88) 0%,
-      rgba(75, 11, 14, 0.65) 45%,
-      rgba(16, 8, 9, 0.96) 100%
-    ),
-    linear-gradient(135deg, #6B1418 0%, #240708 60%, #0D0708 100%);
+  background-image:
+    linear-gradient(180deg, rgba(10, 10, 10, 0.18) 0%, rgba(10, 10, 10, 0.72) 100%),
+    linear-gradient(90deg, rgba(10, 10, 10, 0.88) 0%, rgba(10, 10, 10, 0.45) 50%, rgba(10, 10, 10, 0.2) 100%),
+    url('images/hero-re.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-title-img {
+  height: 56px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8));
 }
 
 /* Watch Video Player Gradient */
@@ -133,42 +143,190 @@ body {
   width: 4%;
 }
 
-/* Continue Watching Progress Bars */
-.cw-progress-track {
+/* ==========================================
+   KEYFRAME ANIMATIONS & MICRO-INTERACTIONS
+   ========================================== */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes playPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(229, 9, 20, 0.55), 0 14px 28px rgba(0, 0, 0, 0.75);
+  }
+  50% {
+    box-shadow: 0 0 0 14px rgba(229, 9, 20, 0), 0 14px 32px rgba(229, 9, 20, 0.45);
+  }
+}
+
+@keyframes modalBackdropFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.9) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Smooth View & Tab Fade-Up */
+.animate-fade-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+/* Staggered Card Entrance */
+.stagger-item {
+  animation: fadeInUp 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: transform, opacity;
+}
+
+.stagger-1  { animation-delay: 0.04s; }
+.stagger-2  { animation-delay: 0.10s; }
+.stagger-3  { animation-delay: 0.16s; }
+.stagger-4  { animation-delay: 0.22s; }
+.stagger-5  { animation-delay: 0.28s; }
+.stagger-6  { animation-delay: 0.34s; }
+.stagger-7  { animation-delay: 0.40s; }
+.stagger-8  { animation-delay: 0.46s; }
+.stagger-9  { animation-delay: 0.52s; }
+.stagger-10 { animation-delay: 0.58s; }
+
+/* Hero Banner Staged Entrance */
+.hero-banner-box > div:first-child {
+  animation: fadeInUp 0.42s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+}
+
+.hero-title {
+  animation: fadeInUp 0.44s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.hero-meta {
+  animation: fadeInUp 0.44s cubic-bezier(0.22, 1, 0.36, 1) 0.19s both;
+}
+
+.hero-actions {
+  animation: fadeInUp 0.44s cubic-bezier(0.22, 1, 0.36, 1) 0.26s both;
+}
+
+/* Watch Video Player Center Play Button Pulse */
+#player-play-btn {
+  animation: playPulseGlow 2.2s infinite ease-in-out;
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease;
+  will-change: transform, box-shadow;
+}
+
+#player-play-btn:hover {
+  transform: scale(1.08);
+}
+
+#player-play-btn:active {
+  transform: scale(0.95);
+}
+
+/* Modal Bagikan Film Fade & Scale-Up */
+#share-modal-backdrop.modal-open {
+  animation: modalBackdropFadeIn 0.25s ease forwards;
+}
+
+#share-modal-backdrop.modal-open .share-modal-box {
+  animation: modalScaleUp 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform, opacity;
+}
+
+/* Poster Card Hover Animation & Poster Image Styling */
+.poster-card,
+.popular-item-card,
+.simpan-item-card {
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease;
+  will-change: transform;
+}
+
+.poster-card:hover,
+.group:hover .poster-card,
+.popular-item-card:hover,
+.simpan-item-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(229, 9, 20, 0.5);
+  box-shadow: 0 12px 28px -6px rgba(229, 9, 20, 0.35);
+}
+
+.poster-card-img {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 3px;
-  background-color: rgba(255, 255, 255, 0.14);
-}
-
-.cw-progress-bar {
+  inset: 0;
+  width: 100%;
   height: 100%;
-  background-color: #E50914;
+  object-fit: cover;
+  border-radius: inherit;
+  z-index: 1;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
-.cw-w-65 {
-  width: 65%;
+.poster-card:hover .poster-card-img,
+.group:hover .poster-card .poster-card-img {
+  transform: scale(1.06);
 }
 
-.cw-w-35 {
-  width: 35%;
+/* Interactive Buttons Micro-Interactions */
+.hero-play-btn,
+#hero-save-btn,
+.watch-action-btn,
+.genre-pill,
+#copy-link-btn,
+.btn-interactive {
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+  will-change: transform;
 }
 
-.cw-w-80 {
-  width: 80%;
+.hero-play-btn:hover,
+#hero-save-btn:hover,
+.watch-action-btn:hover,
+.genre-pill:hover,
+#copy-link-btn:hover,
+.btn-interactive:hover {
+  transform: scale(1.04);
 }
 
-/* Poster Card Hover Animation */
-.poster-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+.hero-play-btn:active,
+#hero-save-btn:active,
+.watch-action-btn:active,
+.genre-pill:active,
+#copy-link-btn:active,
+.btn-interactive:active {
+  transform: scale(0.96);
 }
 
-.poster-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(229, 9, 20, 0.45);
-  box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.75);
+.poster-match-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
 }
 
 /* Desktop Defaults for Mobile-Specific Elements */
@@ -181,10 +339,6 @@ body {
 }
 
 .mobile-play-triangle {
-  display: none;
-}
-
-.genre-pill-anime {
   display: none;
 }
 
@@ -320,10 +474,6 @@ body {
     flex-shrink: 0;
   }
 
-  .genre-pill-anime {
-    display: inline-flex;
-  }
-
   /* Hero Banner Mobile Adjustments */
   .hero-banner-box {
     min-height: 280px !important;
@@ -337,6 +487,10 @@ body {
 
   .hero-title {
     font-size: 28px !important;
+  }
+
+  .hero-title-img {
+    height: 36px !important;
   }
 
   .hero-meta {

@@ -18,7 +18,6 @@ const continueWatchingData = [
     id: 'arcane-echoes',
     title: 'Arcane Echoes',
     subtitle: 'Eps 4 • 18m tersisa',
-    progressClass: 'cw-w-65',
     colorClass: 'thumb-red-deep',
     genre: 'Fantasy',
     year: '2026',
@@ -31,7 +30,6 @@ const continueWatchingData = [
     id: 'silent-orbit',
     title: 'Silent Orbit',
     subtitle: 'Eps 2 • 35m tersisa',
-    progressClass: 'cw-w-35',
     colorClass: 'thumb-grey-mid',
     genre: 'Thriller',
     year: '2025',
@@ -44,7 +42,6 @@ const continueWatchingData = [
     id: 'jakarta-2099',
     title: 'Jakarta 2099',
     subtitle: 'Eps 7 • 9m tersisa',
-    progressClass: 'cw-w-80',
     colorClass: 'thumb-red-bright',
     genre: 'Cyberpunk',
     year: '2026',
@@ -63,19 +60,19 @@ const chosenForYouHome = [
   { id: 'solaris-drift', match: '89% Cocok', colorClass: 'thumb-grey-dark' }
 ];
 
-// Katalog Film per Genre (Horror, Komedi, Action, Drama, Anime)
+// Katalog Film per Genre (Horror, Komedi, Action, Drama)
 const genreCatalog = {
   Horror: [
-    { id: 'heretic-2024', title: 'Heretic (2024)', match: '98% Cocok', rating: '9.2', duration: '1j 54m', year: '2024', genre: 'Horror' },
-    { id: 'longlegs-2024', title: 'Longlegs (2024)', match: '95% Cocok', rating: '8.9', duration: '1j 48m', year: '2024', genre: 'Horror' },
-    { id: 'backrooms-2026', title: 'Backrooms (2026)', match: '93% Cocok', rating: '8.8', duration: '2j 02m', year: '2026', genre: 'Horror' },
-    { id: 'the-monkey-2025', title: 'The Monkey (2025)', match: '91% Cocok', rating: '8.7', duration: '1j 41m', year: '2025', genre: 'Horror' },
-    { id: 'talk-to-me-2024', title: 'Talk to Me (2024 - Peluncuran/Ekspansi Global)', match: '90% Cocok', rating: '8.5', duration: '1j 50m', year: '2024', genre: 'Horror', italicPart: 'Peluncuran/Ekspansi Global)' },
-    { id: 'ugly-stepsister-2025', title: 'The Ugly Stepsister (2025)', match: '89% Cocok', rating: '8.4', duration: '1j 38m', year: '2025', genre: 'Horror' },
-    { id: 'companion-2025', title: 'Companion (2025)', match: '87% Cocok', rating: '8.3', duration: '1j 56m', year: '2025', genre: 'Horror' },
-    { id: '28-years-later-2025', title: '28 Years Later (2025)', match: '86% Cocok', rating: '8.1', duration: '1j 44m', year: '2025', genre: 'Horror' },
-    { id: 'weapons-2025', title: 'Weapons (2025)', match: '84% Cocok', rating: '8.0', duration: '1j 35m', year: '2025', genre: 'Horror' },
-    { id: 'sinners-2025', title: 'Sinners (2025)', match: '90% Cocok', rating: '8.5', duration: '1j 50m', year: '2025', genre: 'Horror' }
+    { id: 'heretic-2024', title: 'Kijsada Paradise (2026)', match: '98% Cocok', rating: '4.3', duration: '1j 54m', year: '2024', genre: 'Horror', image: 'images/horror1.jpg' },
+    { id: 'longlegs-2024', title: 'Other Mommy (2026)', match: '95% Cocok', rating: '5.8', duration: '1j 48m', year: '2024', genre: 'Horror', image: 'images/horror2.png' },
+    { id: 'backrooms-2026', title: 'New Group (2026)', match: '93% Cocok', rating: '6.5', duration: '2j 02m', year: '2026', genre: 'Horror', image: 'images/horror3.jpg' },
+    { id: 'the-monkey-2025', title: 'Beware Boiúna (2026)', match: '91% Cocok', rating: '6.2', duration: '1j 41m', year: '2025', genre: 'Horror', image: 'images/horror4.jpg' },
+    { id: 'talk-to-me-2024', title: 'Resident Evil (2026)', match: '90% Cocok', rating: '7.3', duration: '1j 50m', year: '2024', genre: 'Horror', image: 'images/horror5.jpg' },
+    { id: 'ugly-stepsister-2025', title: 'The Cursed: Insatiable Desires', match: '89% Cocok', rating: '5.6', duration: '1j 38m', year: '2025', genre: 'Horror' },
+    { id: 'companion-2025', title: 'The Red Shoes (2005)', match: '87% Cocok', rating: '6.0', duration: '1j 56m', year: '2025', genre: 'Horror' },
+    { id: '28-years-later-2025', title: 'The Omen (1976)', match: '86% Cocok', rating: '7.4', duration: '1j 44m', year: '2025', genre: 'Horror' },
+    { id: 'weapons-2025', title: 'Siccîn 9 (2026)', match: '84% Cocok', rating: '2.0', duration: '1j 35m', year: '2025', genre: 'Horror' },
+    { id: 'sinners-2025', title: 'The Chosen: Forbidden Cave', match: '90% Cocok', rating: '5.9', duration: '1j 50m', year: '2025', genre: 'Horror' }
   ],
   Komedi: [
     { id: 'shaun-of-the-dead', title: 'Shaun of the Dead (2004)', match: '97% Cocok', rating: '9.1', duration: '1j 45m', year: '2004', genre: 'Komedi' },
@@ -112,18 +109,6 @@ const genreCatalog = {
     { id: 'little-women-2019', title: 'Little Women (2019)', match: '85% Cocok', rating: '8.2', duration: '1j 46m', year: '2019', genre: 'Drama' },
     { id: 'kode-hitam-drama', title: 'Kode Hitam', match: '84% Cocok', rating: '8.1', duration: '2j 01m', year: '2024', genre: 'Drama' },
     { id: 'operasi-senyap-drama', title: 'Operasi Senyap', match: '90% Cocok', rating: '8.7', duration: '2j 04m', year: '2025', genre: 'Drama' }
-  ],
-  Anime: [
-    { id: 'cyberpunk-edgerunners', title: 'Cyberpunk: Edgerunners', match: '99% Cocok', rating: '9.5', duration: '10 Eps', year: '2025', genre: 'Anime, Sci-Fi' },
-    { id: 'solo-leveling-s2', title: 'Solo Leveling: Arise', match: '98% Cocok', rating: '9.3', duration: '12 Eps', year: '2025', genre: 'Anime, Action' },
-    { id: 'demon-slayer-infinity', title: 'Demon Slayer: Infinity Castle', match: '97% Cocok', rating: '9.4', duration: '2j 10m', year: '2025', genre: 'Anime, Fantasy' },
-    { id: 'jujutsu-kaisen-culling', title: 'Jujutsu Kaisen: Culling Game', match: '95% Cocok', rating: '9.1', duration: '24 Eps', year: '2026', genre: 'Anime, Action' },
-    { id: 'chainsaw-man-reze', title: 'Chainsaw Man: Reze Arc', match: '94% Cocok', rating: '9.0', duration: '1j 55m', year: '2025', genre: 'Anime, Action' },
-    { id: 'frieren-beyond', title: 'Frieren: Beyond Journey', match: '96% Cocok', rating: '9.4', duration: '28 Eps', year: '2024', genre: 'Anime, Fantasy' },
-    { id: 'dandadan-2025', title: 'Dan Da Dan (2025)', match: '92% Cocok', rating: '8.9', duration: '12 Eps', year: '2025', genre: 'Anime, Komedi' },
-    { id: 'sakamoto-days', title: 'Sakamoto Days (2025)', match: '91% Cocok', rating: '8.8', duration: '12 Eps', year: '2025', genre: 'Anime, Action' },
-    { id: 'blue-lock-u20', title: 'Blue Lock vs U-20', match: '89% Cocok', rating: '8.7', duration: '14 Eps', year: '2025', genre: 'Anime, Sport' },
-    { id: 'akira-remastered', title: 'Akira 4K Remastered', match: '93% Cocok', rating: '9.2', duration: '2j 04m', year: '1988', genre: 'Anime, Cyberpunk' }
   ]
 };
 
@@ -350,34 +335,36 @@ function updateGenrePillsUI() {
   const pills = document.querySelectorAll('.genre-pill');
   pills.forEach(pill => {
     const g = pill.getAttribute('data-genre');
-    const animeExtra = g === 'Anime' ? 'genre-pill-anime ' : '';
     if (g === currentGenreTab) {
-      pill.className = `genre-pill ${animeExtra}px-5 py-1.5 rounded-full text-xs font-bold transition bg-[#E50914] text-white shadow-md shadow-[#E50914]/20`;
+      pill.className = 'genre-pill px-5 py-1.5 rounded-full text-xs font-bold transition bg-[#E50914] text-white shadow-md shadow-[#E50914]/20';
     } else {
-      pill.className = `genre-pill ${animeExtra}px-5 py-1.5 rounded-full text-xs font-medium transition bg-[#121212] text-[#A3A3A3] hover:text-white border border-white/10`;
+      pill.className = 'genre-pill px-5 py-1.5 rounded-full text-xs font-medium transition bg-[#121212] text-[#A3A3A3] hover:text-white border border-white/10';
     }
   });
 }
 
+function triggerFadeUpAnimation(el) {
+  if (!el) return;
+  el.classList.remove('animate-fade-up');
+  void el.offsetWidth;
+  el.classList.add('animate-fade-up');
+}
+
 function renderHomeSemua() {
-  // 1. Lanjutkan Menonton (dengan progress bar merah di bawah poster)
+  // 1. Lanjutkan Menonton (Kotak bersih tanpa progress bar, dengan Staggered Entrance)
   const continueGrid = document.getElementById('continue-watching-grid');
-  continueGrid.innerHTML = continueWatchingData.map(item => `
-    <div onclick="openWatchDetail('${item.id}')" class="cursor-pointer group min-w-0">
-      <div class="${item.colorClass} card-border rounded-[14px] h-[132px] w-full poster-card relative overflow-hidden continue-watching-thumb">
-        <div class="cw-progress-track">
-          <div class="cw-progress-bar ${item.progressClass}"></div>
-        </div>
-      </div>
+  continueGrid.innerHTML = continueWatchingData.map((item, idx) => `
+    <div onclick="openWatchDetail('${item.id}')" class="cursor-pointer group min-w-0 stagger-item stagger-${(idx % 10) + 1}">
+      <div class="${item.colorClass} card-border rounded-[14px] h-[132px] w-full poster-card relative overflow-hidden continue-watching-thumb"></div>
       <h3 class="text-xs font-bold text-white mt-2.5 truncate group-hover:text-[#FF5A5F] transition">${item.title}</h3>
       <p class="text-[11px] text-[#8E8E8E] mt-0.5 truncate">${item.subtitle}</p>
     </div>
   `).join('');
 
-  // 2. Dipilih Khusus Untukmu (4 Kartu di Desktop, 2x2 di Mobile)
+  // 2. Dipilih Khusus Untukmu (4 Kartu di Desktop, 2x2 di Mobile, dengan Staggered Entrance)
   const chosenGrid = document.getElementById('chosen-for-you-grid');
-  chosenGrid.innerHTML = chosenForYouHome.map(item => `
-    <div onclick="openWatchDetail('${item.id}')" class="${item.colorClass} card-border rounded-[14px] h-[155px] p-3.5 cursor-pointer poster-card relative flex items-start justify-start chosen-card-box">
+  chosenGrid.innerHTML = chosenForYouHome.map((item, idx) => `
+    <div onclick="openWatchDetail('${item.id}')" class="${item.colorClass} card-border rounded-[14px] h-[155px] p-3.5 cursor-pointer poster-card relative overflow-hidden flex items-start justify-start chosen-card-box stagger-item stagger-${(idx % 10) + 4}">
       <span class="bg-[#180C0D]/90 border border-white/10 text-[#FF7A7E] text-[10px] font-bold px-3 py-1 rounded-full">
         ${item.match}
       </span>
@@ -399,10 +386,14 @@ function renderGenreTabContent(genre) {
     if (movie.italicPart) {
       displayTitleHtml = `Talk to Me (2024 - <span class="italic font-normal">Peluncuran/Ekspansi Global)</span>`;
     }
+    const posterImgHtml = movie.image
+      ? `<img src="${movie.image}" alt="${movie.title}" class="poster-card-img" />`
+      : '';
     return `
-      <div onclick="openWatchDetail('${movie.id}')" class="cursor-pointer group min-w-0">
-        <div class="${colorClass} card-border rounded-[14px] h-[230px] p-3.5 poster-card relative flex items-start genre-poster-box">
-          <span class="bg-[#180C0D]/90 border border-white/10 text-[#FF7A7E] text-[10px] font-bold px-3 py-1 rounded-full">
+      <div onclick="openWatchDetail('${movie.id}')" class="cursor-pointer group min-w-0 stagger-item stagger-${(idx % 10) + 1}">
+        <div class="${colorClass} card-border rounded-[14px] h-[230px] p-3.5 poster-card relative overflow-hidden flex items-start genre-poster-box">
+          ${posterImgHtml}
+          <span class="poster-match-badge bg-[#180C0D]/90 border border-white/10 text-[#FF7A7E] text-[10px] font-bold px-3 py-1 rounded-full">
             ${movie.match}
           </span>
         </div>
@@ -453,7 +444,7 @@ function renderExploreList(query = '') {
 
   if (items.length === 0) {
     listEl.innerHTML = `
-      <div class="bg-[#121212] card-border rounded-2xl p-8 text-center text-xs text-[#8E8E8E]">
+      <div class="bg-[#121212] card-border rounded-2xl p-8 text-center text-xs text-[#8E8E8E] animate-fade-up">
         Tidak ditemukan film yang cocok dengan pencarian "<span class="text-white font-semibold">${query}</span>".
       </div>
     `;
@@ -461,7 +452,7 @@ function renderExploreList(query = '') {
   }
 
   listEl.innerHTML = items.map((item, idx) => `
-    <div onclick="openWatchDetail('${item.id}')" class="bg-[#121212] hover:bg-[#171717] card-border rounded-2xl p-4 flex items-center justify-between cursor-pointer transition group">
+    <div onclick="openWatchDetail('${item.id}')" class="popular-item-card bg-[#121212] hover:bg-[#171717] card-border rounded-2xl p-4 flex items-center justify-between cursor-pointer transition group stagger-item stagger-${(idx % 10) + 1}">
       <div class="flex items-center gap-4 min-w-0">
         <div class="w-16 h-16 rounded-xl ${item.colorClass} flex-shrink-0"></div>
         <div class="min-w-0">
@@ -470,7 +461,7 @@ function renderExploreList(query = '') {
           <p class="text-xs text-[#8E8E8E] mt-0.5 truncate">${item.meta}</p>
         </div>
       </div>
-      <button onclick="event.stopPropagation(); openWatchDetail('${item.id}')" class="w-9 h-9 rounded-full bg-[#E50914] group-hover:bg-[#f6121d] group-hover:scale-105 text-white text-xs font-bold flex items-center justify-center transition shadow-md shadow-[#E50914]/25 flex-shrink-0 ml-3">
+      <button onclick="event.stopPropagation(); openWatchDetail('${item.id}')" class="btn-interactive w-9 h-9 rounded-full bg-[#E50914] group-hover:bg-[#f6121d] text-white text-xs font-bold flex items-center justify-center transition shadow-md shadow-[#E50914]/25 flex-shrink-0 ml-3">
         ▶
       </button>
     </div>
@@ -488,10 +479,10 @@ function renderSimpanView() {
 
   if (count === 0) {
     gridEl.innerHTML = `
-      <div class="col-span-full bg-[#121212] card-border rounded-2xl p-12 text-center">
+      <div class="col-span-full bg-[#121212] card-border rounded-2xl p-12 text-center animate-fade-up">
         <p class="text-sm font-bold text-white">Belum ada film yang disimpan</p>
         <p class="text-xs text-[#8E8E8E] mt-1 mb-5">Tambahkan film favoritmu dari halaman Beranda atau Explore.</p>
-        <button onclick="navigateTo('beranda')" class="bg-[#E50914] hover:bg-[#f6121d] text-white text-xs font-semibold px-6 py-2.5 rounded-xl transition">
+        <button onclick="navigateTo('beranda')" class="btn-interactive bg-[#E50914] hover:bg-[#f6121d] text-white text-xs font-semibold px-6 py-2.5 rounded-xl transition">
           Jelajahi Film
         </button>
       </div>
@@ -499,8 +490,8 @@ function renderSimpanView() {
     return;
   }
 
-  gridEl.innerHTML = savedMoviesList.map(item => `
-    <div class="bg-[#121212] card-border rounded-2xl p-5 flex items-center gap-5">
+  gridEl.innerHTML = savedMoviesList.map((item, idx) => `
+    <div class="simpan-item-card bg-[#121212] card-border rounded-2xl p-5 flex items-center gap-5 stagger-item stagger-${(idx % 10) + 1}">
       <div onclick="openWatchDetail('${item.id}')" class="w-20 h-28 rounded-xl ${item.colorClass} flex-shrink-0 cursor-pointer hover:opacity-90 transition"></div>
       <div class="flex-1 min-w-0">
         <h3 onclick="openWatchDetail('${item.id}')" class="text-base font-extrabold text-white uppercase truncate cursor-pointer hover:text-[#FF5A5F] transition">
@@ -510,10 +501,10 @@ function renderSimpanView() {
         <p class="text-[11px] font-semibold text-[#E05257] mt-1.5">${item.status}</p>
 
         <div class="flex items-center gap-2.5 mt-3.5">
-          <button onclick="openWatchDetail('${item.id}')" class="bg-[#E50914] hover:bg-[#f6121d] text-white text-xs font-bold px-7 py-2 rounded-lg transition">
+          <button onclick="openWatchDetail('${item.id}')" class="btn-interactive bg-[#E50914] hover:bg-[#f6121d] text-white text-xs font-bold px-7 py-2 rounded-lg transition">
             Tonton
           </button>
-          <button onclick="removeSavedFilm('${item.id}')" class="bg-[#222222] hover:bg-[#2E2E2E] border border-white/10 text-[#D4D4D4] hover:text-white text-xs font-semibold px-5 py-2 rounded-lg transition">
+          <button onclick="removeSavedFilm('${item.id}')" class="btn-interactive bg-[#222222] hover:bg-[#2E2E2E] border border-white/10 text-[#D4D4D4] hover:text-white text-xs font-semibold px-5 py-2 rounded-lg transition">
             Hapus
           </button>
         </div>
@@ -533,38 +524,42 @@ function navigateTo(viewName, focusSearch = false) {
   currentView = viewName;
   document.body.setAttribute('data-view', viewName);
 
-  document.getElementById('view-beranda').classList.toggle('hidden', viewName !== 'beranda');
-  document.getElementById('view-watch').classList.toggle('hidden', viewName !== 'watch');
-  document.getElementById('view-explore').classList.toggle('hidden', viewName !== 'explore');
-  document.getElementById('view-simpan').classList.toggle('hidden', viewName !== 'simpan');
+  const viewBeranda = document.getElementById('view-beranda');
+  const viewWatch = document.getElementById('view-watch');
+  const viewExplore = document.getElementById('view-explore');
+  const viewSimpan = document.getElementById('view-simpan');
+
+  viewBeranda.classList.toggle('hidden', viewName !== 'beranda');
+  viewWatch.classList.toggle('hidden', viewName !== 'watch');
+  viewExplore.classList.toggle('hidden', viewName !== 'explore');
+  viewSimpan.classList.toggle('hidden', viewName !== 'simpan');
 
   updateNavbarActiveState();
 
   if (viewName === 'beranda') {
     renderHomeSemua();
+    triggerFadeUpAnimation(viewBeranda);
   } else if (viewName === 'explore') {
     const searchInput = document.getElementById('explore-search-input');
     renderExploreList(searchInput ? searchInput.value : '');
+    // Stagger "Jelajahi Genre" cards on Explore view entrance
+    document.querySelectorAll('.explore-genre-card').forEach((card, idx) => {
+      card.classList.remove('stagger-item', `stagger-${idx + 1}`);
+      void card.offsetWidth;
+      card.classList.add('stagger-item', `stagger-${idx + 1}`);
+    });
+    triggerFadeUpAnimation(viewExplore);
     if (focusSearch && searchInput) {
       setTimeout(() => searchInput.focus(), 50);
     }
   } else if (viewName === 'simpan') {
     renderSimpanView();
+    triggerFadeUpAnimation(viewSimpan);
+  } else if (viewName === 'watch') {
+    triggerFadeUpAnimation(viewWatch);
   }
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function handlePartyNavClick() {
-  // Highlight Party button briefly and open Watch Party experience on Neon Horizon
-  const mParty = document.getElementById('mnav-party');
-  if (mParty) {
-    document.querySelectorAll('.mobile-nav-item').forEach(el => {
-      el.className = 'mobile-nav-item';
-    });
-    mParty.className = 'mobile-nav-item active-party';
-  }
-  openWatchDetail('neon-horizon');
 }
 
 function selectGenreTab(genre) {
@@ -578,10 +573,12 @@ function selectGenreTab(genre) {
     semuaEl.classList.remove('hidden');
     genreEl.classList.add('hidden');
     renderHomeSemua();
+    triggerFadeUpAnimation(semuaEl);
   } else {
     semuaEl.classList.add('hidden');
     genreEl.classList.remove('hidden');
     renderGenreTabContent(genre);
+    triggerFadeUpAnimation(genreEl);
   }
 }
 
@@ -756,14 +753,15 @@ function openShareModal() {
   const modal = document.getElementById('share-modal-backdrop');
   const feedback = document.getElementById('copy-feedback-label');
   feedback.classList.add('hidden');
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
+  modal.classList.remove('hidden', 'modal-open');
+  void modal.offsetWidth;
+  modal.classList.add('flex', 'modal-open');
 }
 
 function closeShareModal() {
   const modal = document.getElementById('share-modal-backdrop');
+  modal.classList.remove('flex', 'modal-open');
   modal.classList.add('hidden');
-  modal.classList.remove('flex');
 }
 
 function closeShareModalOnBackdrop(event) {
@@ -798,4 +796,5 @@ document.addEventListener('DOMContentLoaded', () => {
   renderHomeSemua();
   renderExploreList();
   renderSimpanView();
+  triggerFadeUpAnimation(document.getElementById('view-beranda'));
 });
